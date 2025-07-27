@@ -1,0 +1,15 @@
+#spring:
+#  cloud:
+#    gateway:
+#      server:
+#        webflux:
+#          routes:
+#            - id: employee-service
+#              uri: lb://employee-service
+#              predicates:
+#                - Path=/api/v1/**
+#
+#            - id: department-service
+#              uri: lb://department-service
+#              predicates:
+#                - Path=/api/v1/**
