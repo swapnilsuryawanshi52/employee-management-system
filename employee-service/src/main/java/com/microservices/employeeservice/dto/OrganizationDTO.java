@@ -4,16 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmployeeDTO {
-    private Long employeeId;
-    private String employeeName;
-    private String employeeEmail;
-    private String employeePhoneNumber;
-
-    private String departmentCode;
-
+public class OrganizationDTO {
+    private Long organizationId;
+    private String organizationName;
+    private String organizationDescription;
     private String organizationCode;
+    private LocalDate createdDate;
 }

@@ -3,6 +3,7 @@ package com.microservices.employeeservice.service.impl;
 import com.microservices.employeeservice.dto.APIResponseDTO;
 import com.microservices.employeeservice.dto.DepartmentDTO;
 import com.microservices.employeeservice.dto.EmployeeDTO;
+import com.microservices.employeeservice.dto.OrganizationDTO;
 import com.microservices.employeeservice.entity.Employee;
 import com.microservices.employeeservice.mapper.EmployeeMapper;
 import com.microservices.employeeservice.repository.EmployeeRepository;
@@ -64,6 +65,12 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .bodyToMono(DepartmentDTO.class)
                 .block();
 
+        OrganizationDTO organizationDTO = webClient.get()
+                .uri("http://localhost:8083/api/v1/organization/" + employee.getOrganizationCode())
+                .retrieve()
+                .bodyToMono(OrganizationDTO.class)
+                .block();
+
 //        DepartmentDTO departmentDTO = apiClient.getDepartmentByCode(employee.getDepartmentCode());
 
         // Convert Employee JPA Entity to EmployeeDTO
@@ -72,6 +79,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         APIResponseDTO apiResponseDTO = new APIResponseDTO();
         apiResponseDTO.setEmployeeDTO(employeeDTO);
         apiResponseDTO.setDepartmentDTO(departmentDTO);
+        apiResponseDTO.setOrganizationDTO(organizationDTO);
 
         return apiResponseDTO;
     }

@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "employees")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,4 +18,7 @@ public class Employee {
     private String employeePhoneNumber;
 
     private String departmentCode;
+
+    private String organizationCode;
+
 }
